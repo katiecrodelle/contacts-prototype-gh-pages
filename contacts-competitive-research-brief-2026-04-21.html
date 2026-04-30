@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacts UX &amp; Competitive Research — Marketing / CRM SaaS (April 2026)</title>
+  <link rel="stylesheet" href="./hub-subpage.css" />
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #fff;
+      --text: #1a1d26;
+      --muted: #5c6370;
+      --border: #e2e5eb;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 64px; }
+    header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+    header h1 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -0.02em; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin-bottom: 18px;
+    }
+    h2 { margin: 0 0 14px; font-size: 1.15rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    h3 { margin: 20px 0 8px; font-size: 1.02rem; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 0 0 12px; padding-left: 1.25rem; }
+    li { margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin: 12px 0;
+    }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: #f0f2f6; font-weight: 600; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 6px; background: #eef1f6; color: var(--muted); }
+    a { color: var(--accent); }
+    .footnotes { font-size: 0.85rem; color: var(--muted); }
+    .footnotes ol { padding-left: 1.1rem; }
+    .footnotes li { margin-bottom: 10px; word-break: break-word; }
+    @media print {
+      body { background: #fff; }
+      section { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="hub-subpage-nav" aria-label="Hub">
+    <a class="hub-subpage-nav__back" href="./index.html#hub">← Contacts hub</a>
+    <span class="hub-subpage-nav__meta">Research brief · April 2026</span>
+  </nav>
+  <div class="wrap">
+    <header>
+      <h1>Contacts in marketing &amp; CRM software — industry practices &amp; competitive landscape</h1>
+    </header>
+
+    <section id="exec">
+      <h2>Executive summary</h2>
+      <p>Products that combine <strong>contacts</strong> with <strong>email or multi-channel marketing</strong> converge on a few patterns: a clear <strong>identity model</strong> (email and/or phone as keys), explicit <strong>consent</strong>, strong <strong>import + mapping</strong> flows on desktop, and <strong>fast capture</strong> (manual entry, device address book, files, scans) on mobile. Differentiation increasingly comes from <strong>segmentation</strong>, <strong>automation triggers tied to profile change</strong>, <strong>integrations</strong>, and <strong>data hygiene</strong> (duplicates, ownership, lifecycle), not from “having a contact list.”</p>
+      <p><span class="tag">Takeaway</span> Best-in-class is <strong>dimensional</strong>: HubSpot and Salesforce set the bar for <strong>CRM record depth and workflows</strong>; Mailchimp emphasizes <strong>audience growth on mobile</strong> (scanner, device import, large files); Brevo stresses <strong>flexible identifiers</strong> (email, SMS, WhatsApp) and heavy file import; Klaviyo centers <strong>profiles + consent columns + list-triggered flows</strong> for commerce.</p>
+    </section>
+
+    <section id="scope">
+      <h2>Scope &amp; definitions</h2>
+      <p><strong>“Contacts”</strong> here means marketable or trackable people records used for campaigns, automation, and reporting — often overlapping with CRM “leads” or “profiles,” depending on the vendor.</p>
+      <p><strong>Peers of Constant Contact</strong> for this brief: generalist email marketing / SMB marketing suites and adjacent platforms where contacts are primary objects (Mailchimp, Brevo, Campaign Monitor, ActiveCampaign, HubSpot Marketing Hub, Klaviyo, etc.). Enterprise MAPs (Adobe Marketo, Salesforce Marketing Cloud) follow similar principles at greater scale but heavier implementation.</p>
+    </section>
+
+    <section id="practices">
+      <h2>Industry best practices (contacts-centric SaaS)</h2>
+
+      <h3>Product &amp; data model</h3>
+      <ul>
+        <li><strong>Single canonical record</strong> per person (or per channel identity with explicit linking) to avoid duplicate sends and conflicting consent.</li>
+        <li><strong>Visible subscription / consent state</strong> per channel; imports should support consent columns where regulated (e.g. email/SMS marketing consent in Klaviyo’s model).</li>
+        <li><strong>Auditable changes</strong> (who imported, when, source) for compliance and support.</li>
+        <li><strong>Duplicate handling</strong> policy stated at import (merge vs skip vs update) — Brevo documents de-duplication on import; Klaviyo updates existing profiles by email match.</li>
+      </ul>
+
+      <h3>Import &amp; onboarding</h3>
+      <ul>
+        <li><strong>Desktop:</strong> file upload, copy/paste, column mapping with preview, optional AI-assisted mapping (emerging), integrations and API for recurring sync.</li>
+        <li><strong>Post-import:</strong> clear summary (added, updated, failed rows) and downloadable error file.</li>
+        <li><strong>Guided choice</strong> when multiple entry paths exist (“few contacts” vs “spreadsheet”) reduces abandonment.</li>
+      </ul>
+
+      <h3>Management &amp; engagement</h3>
+      <ul>
+        <li><strong>Search, filters, tags, lists/segments</strong> that match how marketers think (campaign, persona, geography, engagement).</li>
+        <li><strong>Activity or timeline</strong> on the record for sales/marketing alignment (strong in CRM-led products).</li>
+        <li><strong>Guardrails:</strong> export permissions, suppression lists, role-based access.</li>
+      </ul>
+
+      <h3>Research-backed pain points (CRM / contacts category)</h3>
+      <p>Third-party CRM summaries cite structural issues: high duplicate rates, missing owners, weak lifecycle stages, and significant weekly time lost to finding or entering data — worth designing <strong>defaults, bulk tools, and automation</strong> against.<sup><a href="#fn-crm">1</a></sup></p>
+    </section>
+
+    <section id="desktop-mobile">
+      <h2>Desktop vs mobile — differentiated best practices</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Desktop (primary)</th>
+            <th>Mobile (companion)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Information density</td>
+            <td>Tables, multi-column mapping, side-by-side preview, keyboard power use.</td>
+            <td>Cards, progressive disclosure, fewer columns visible at once.</td>
+          </tr>
+          <tr>
+            <td>Bulk operations</td>
+            <td>Large CSV/XLSX, batch tagging, segment builders, cross-list moves.</td>
+            <td>Large files where supported (Mailchimp documents up to 200 MB on mobile); otherwise defer to desktop or chunked upload.</td>
+          </tr>
+          <tr>
+            <td>Capture in the field</td>
+            <td>Integrations, webinars, ecommerce sync, API.</td>
+            <td>Quick add, address-book import, business card scan, share-sheet intake.<sup><a href="#fn-mc">2</a></sup></td>
+          </tr>
+          <tr>
+            <td>Navigation patterns</td>
+            <td>Persistent nav, modals/dialogs, deep linking to a contact.</td>
+            <td>Bottom sheets acceptable for iOS/Android familiarity; <strong>desktop should not mimic mobile sheets</strong> without adaptation (centered dialog, denser targets).</td>
+          </tr>
+          <tr>
+            <td>Parity expectations</td>
+            <td>Users expect full list/segment management.</td>
+            <td>Users accept reduced parity if core actions are fast; <strong>gaps</strong> (e.g. list access on mobile) generate support noise.<sup><a href="#fn-hs">3</a></sup></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Cross-device guidance from UX literature: responsive breakpoints, simplify tables on small screens, sync and performance, accessibility (WCAG).<sup><a href="#fn-equal">4</a></sup></p>
+    </section>
+
+    <section id="swot">
+      <h2>Strengths, weaknesses, and opportunities (category-level)</h2>
+      <p>This is a <strong>strategic lens for the product category</strong> (SMB + mid-market marketing platforms with contacts), not a rating of one vendor.</p>
+      <table>
+        <thead>
+          <tr><th></th><th>Typical patterns</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Strengths</strong></td>
+            <td>Familiar mental model (lists, tags, import); high ROI channel (email); rich integration marketplaces; templates and AI copy assistance increasingly table stakes.</td>
+          </tr>
+          <tr>
+            <td><strong>Weaknesses</strong></td>
+            <td>Contact data decays without hygiene tools; import errors frustrate non-technical users; mobile/desktop <strong>feature asymmetry</strong> confuses; compliance copy can feel obstructive if not paired with clear progress.</td>
+          </tr>
+          <tr>
+            <td><strong>Opportunities</strong></td>
+            <td>Smarter <strong>mapping and validation</strong> (AI column match, phone/email validation); proactive <strong>duplicate merge</strong>; “fix your top 100 errors” workflows; <strong>offline-first</strong> capture for events; tighter <strong>CRM-like timeline</strong> without full CRM weight; transparent <strong>consent + source</strong> on each record.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="bic">
+      <h2>Who is “best in class”? (by dimension)</h2>
+      <p>No single vendor wins every scenario; buyers optimize for CRM depth, price, commerce, or automation.</p>
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th>Reference players</th><th>Why they’re cited</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CRM + contact record on mobile</td>
+            <td>HubSpot, Salesforce</td>
+            <td>Calls, tasks, notes, meetings, notifications tied to records; deep ecosystem.<sup><a href="#fn-hs2">5</a></sup></td>
+          </tr>
+          <tr>
+            <td>Audience growth &amp; mobile capture</td>
+            <td>Mailchimp</td>
+            <td>Scanner, device contacts, CSV/XLSX on mobile, tagging on import.<sup><a href="#fn-mc">2</a></sup></td>
+          </tr>
+          <tr>
+            <td>Multi-channel identity + bulk import UX</td>
+            <td>Brevo</td>
+            <td>Email/SMS/WhatsApp attributes, large files, mapping, de-dupe messaging.<sup><a href="#fn-br">6</a></sup></td>
+          </tr>
+          <tr>
+            <td>Ecommerce profile + consent + flows</td>
+            <td>Klaviyo</td>
+            <td>List import with consent columns; profile merge rules; flow triggers from list membership.<sup><a href="#fn-kl">7</a></sup></td>
+          </tr>
+          <tr>
+            <td>Automation tied to contact behavior</td>
+            <td>ActiveCampaign</td>
+            <td>Often positioned around behavioral automation and sales/email alignment in comparisons.<sup><a href="#fn-ac">8</a></sup></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="competitors">
+      <h2>Constant Contact — direct competitors &amp; how they handle contacts</h2>
+      <p>Constant Contact sits in a crowded SMB email / digital marketing space; comparisons in 2025–2026 roundups routinely name <strong>Mailchimp, Brevo, ActiveCampaign, HubSpot, Klaviyo, Campaign Monitor, MailerLite</strong>, and vertical tools (e.g. Omnisend for retail).<sup><a href="#fn-roundup">9</a></sup></p>
+
+      <h3>Constant Contact (baseline for comparison)</h3>
+      <ul>
+        <li><strong>Mobile:</strong> Marketing materials and KB describe adding/editing/organizing contacts, importing from the device, manual add, and business card scan; VCF/device pathways appear in help titles.<sup><a href="#fn-ctct">10</a></sup></li>
+        <li><strong>Platform / API:</strong> Bulk import exists via developer documentation for integrations.<sup><a href="#fn-ctct-api">11</a></sup></li>
+      </ul>
+
+      <h3>Competitor snapshot — contacts &amp; cross-device</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Competitor</th>
+            <th>Desktop / web (contacts)</th>
+            <th>Mobile (contacts)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mailchimp</strong></td>
+            <td>Audience-centric model; robust import and properties.</td>
+            <td>Manual add, <strong>business card / sheet scanner</strong>, device address book, <strong>CSV up to 200 MB / XLSX</strong>, tags and optional update-existing on import.<sup><a href="#fn-mc">2</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>HubSpot</strong></td>
+            <td>Full CRM: records, lists, workflows, deep integration.</td>
+            <td>Create/edit contacts, call/email/note shortcuts; <strong>list access limitations</strong> reported (workarounds via filtered views).<sup><a href="#fn-hs">3</a></sup></td>
+          </tr>
+          <tr>
+            <td><strong>Brevo</strong></td>
+            <td>Upload file or copy/paste; map to attributes; formats CSV/XLSX/TXT; very large file limit (docs cite up to 250 MB); <strong>de-duplication</strong> on import.<sup><a href="#fn-br">6</a></sup></td>
+            <td>Multi-channel contacts; mobile experience secondary in public docs reviewed here — strength is web import flexibility.</td>
+          </tr>
+          <tr>
+            <td><strong>Klaviyo</strong></td>
+            <td>CSV to lists (~50 MB in help article); <strong>consent columns</strong>; profile upsert by email; SFTP for scale.<sup><a href="#fn-kl">7</a></sup></td>
+            <td>Profile/list management increasingly important for SMS; parity expectations high for commerce brands.</td>
+          </tr>
+          <tr>
+            <td><strong>ActiveCampaign</strong></td>
+            <td>Contact + deal automation; strong in “serious marketer” comparisons.</td>
+            <td>Mobile app exists for on-the-go work; exact list parity varies — position as automation-first.</td>
+          </tr>
+          <tr>
+            <td><strong>Campaign Monitor / MailerLite / others</strong></td>
+            <td>Solid list/subscriber models and imports; often design or price differentiated vs automation depth.</td>
+            <td>Varies; typically campaign creation less used on phone than quick stats and subscriber checks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="implications">
+      <h2>Implications for product teams (actionable)</h2>
+      <ol>
+        <li><strong>Declare parity rules:</strong> publish which contact actions are desktop-only vs mobile-capable to set expectations (HubSpot’s list gap is a cautionary pattern).<sup><a href="#fn-hs">3</a></sup></li>
+        <li><strong>Desktop import:</strong> invest in mapping, validation, and error export; consider AI-assisted column matching where it reduces support tickets (trend across vendors).</li>
+        <li><strong>Mobile import:</strong> prioritize speed (scan, address book, share intent) and clear permission/consent copy.</li>
+        <li><strong>UI pattern discipline:</strong> avoid mobile bottom-sheet idioms on large breakpoints; use dialogs, grids, and denser lists.<sup><a href="#fn-equal">4</a></sup></li>
+        <li><strong>Data hygiene UX:</strong> surface duplicates and “incomplete but marketable” records as fixable queues, not silent failures.</li>
+      </ol>
+    </section>
+
+    <section id="sources" class="footnotes">
+      <h2>Sources &amp; further reading</h2>
+      <ol>
+        <li id="fn-crm">CRM Compared — contact management practices and statistics (2026). <a href="https://crmcompared.com/blog/crm-contact-management/">https://crmcompared.com/blog/crm-contact-management/</a></li>
+        <li id="fn-mc">Mailchimp Help — Add or import contacts on mobile. <a href="https://mailchimp.com/help/add-import-contacts-mobile">https://mailchimp.com/help/add-import-contacts-mobile</a></li>
+        <li id="fn-hs">HubSpot Community — discussion of lists access in mobile app (illustrates parity gap risk). <a href="https://community.hubspot.com/t5/Lists-Lead-Scoring-Workflows/Accessing-lists-in-the-mobile-app/m-p/1156069">https://community.hubspot.com/t5/Lists-Lead-Scoring-Workflows/Accessing-lists-in-the-mobile-app/m-p/1156069</a></li>
+        <li id="fn-equal">Equal Design — CRM design best practices (mobile &amp; desktop). <a href="https://www.equal.design/blog/best-practices-for-crm-design-on-mobile-and-desktop">https://www.equal.design/blog/best-practices-for-crm-design-on-mobile-and-desktop</a></li>
+        <li id="fn-hs2">HubSpot — Mobile CRM app capabilities. <a href="https://www.hubspot.com/products/sales/mobile-crm-app">https://www.hubspot.com/products/sales/mobile-crm-app</a> · Knowledge base: work with records in mobile app. <a href="https://knowledge.hubspot.com/crm-setup/work-with-records-in-the-hubspot-mobile-app">https://knowledge.hubspot.com/crm-setup/work-with-records-in-the-hubspot-mobile-app</a></li>
+        <li id="fn-br">Brevo Help — Import your contacts (formats, mapping, de-duplication). <a href="https://help.brevo.com/hc/en-us/articles/115000719584-Import-your-contacts-to-Brevo">https://help.brevo.com/hc/en-us/articles/115000719584-Import-your-contacts-to-Brevo</a></li>
+        <li id="fn-kl">Klaviyo Help — Import subscribers / profile properties (CSV, consent columns, profile behavior). <a href="https://help.klaviyo.com/hc/en-us/articles/115005251128">https://help.klaviyo.com/hc/en-us/articles/115005251128</a></li>
+        <li id="fn-ac">ActiveCampaign — email marketing software comparison (positioning context). <a href="https://www.activecampaign.com/blog/email-marketing-software-comparison-guide">https://www.activecampaign.com/blog/email-marketing-software-comparison-guide</a></li>
+        <li id="fn-roundup">Example 2026 comparison / landscape articles (non-exhaustive): ProPicked platforms comparison. <a href="https://propicked.com/blog/best-email-marketing-platforms-2026">https://propicked.com/blog/best-email-marketing-platforms-2026</a></li>
+        <li id="fn-ctct">Constant Contact — Mobile marketing features overview. <a href="https://www.constantcontact.com/features/mobile-marketing">https://www.constantcontact.com/features/mobile-marketing</a></li>
+        <li id="fn-ctct-api">Constant Contact Developer — Import contacts API guide. <a href="https://developer.constantcontact.com/api_guide/import_contacts.html">https://developer.constantcontact.com/api_guide/import_contacts.html</a></li>
+      </ol>
+      <p><strong>Disclaimer:</strong> Competitor capabilities change frequently; validate critical claims in each vendor’s current help center before contractual or roadmap decisions.</p>
+    </section>
+  </div>
+</body>
+</html>

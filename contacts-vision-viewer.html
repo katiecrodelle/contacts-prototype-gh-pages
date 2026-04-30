@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bump when contacts-vision.md changes so GitHub Pages / browsers pick up the new file. -->
+  <meta name="contacts-vision-rev" content="20260424b" />
+  <title>Contacts vision story</title>
+  <link rel="stylesheet" href="./hub-subpage.css" />
+</head>
+<body>
+  <nav class="hub-subpage-nav" aria-label="Subpage">
+    <a class="hub-subpage-nav__back" href="./index.html#hub">← Contacts hub</a>
+    <span class="hub-subpage-nav__meta">Markdown · vision story</span>
+  </nav>
+  <main class="hub-subpage-md" id="md" aria-live="polite">
+    <p style="font-family:system-ui,sans-serif;color:#64748b">Loading…</p>
+  </main>
+  <script>
+    function esc(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    var rev = document.querySelector('meta[name="contacts-vision-rev"]');
+    var q = rev && rev.getAttribute('content') ? '?v=' + encodeURIComponent(rev.getAttribute('content')) : '';
+    fetch('./contacts-vision.md' + q, { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.text();
+      })
+      .then(function (t) {
+        document.getElementById('md').innerHTML = '<pre>' + esc(t) + '</pre>';
+      })
+      .catch(function () {
+        document.getElementById('md').innerHTML =
+          '<p style="font-family:system-ui,sans-serif">Could not load <code>contacts-vision.md</code>. Open the <a href="./contacts-vision.md">raw file</a> or return to the <a href="./index.html#hub">hub</a>.</p>';
+      });
+  </script>
+</body>
+</html>

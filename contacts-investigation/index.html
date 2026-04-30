@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacts &amp; list investigation — hub summary</title>
+  <link rel="stylesheet" href="../hub-subpage.css" />
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --accent: #1856b8;
+      --danger: #b91c1c;
+      --ok: #047857;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    .wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+    header.doc-head {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+    }
+    header.doc-head h1 {
+      margin: 0 0 8px;
+      font-size: 1.55rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+    header.doc-head .meta {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 18px;
+    }
+    section h2 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    section h3 {
+      margin: 18px 0 8px;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+    ul { margin: 8px 0 0; padding-left: 1.2em; }
+    li { margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 10px 0 0;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #e2e8f0; font-weight: 700; }
+    blockquote {
+      margin: 12px 0 0;
+      padding: 10px 14px;
+      border-left: 4px solid var(--accent);
+      background: #eff6ff;
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #e0e7ff;
+      color: #3730a3;
+      margin-right: 6px;
+    }
+    .sources {
+      font-size: 0.88rem;
+    }
+    .sources a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .callout {
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      font-size: 0.92rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="hub-subpage-nav" aria-label="Hub">
+    <a class="hub-subpage-nav__back" href="../index.html#hub">← Contacts hub</a>
+    <span class="hub-subpage-nav__meta">Investigation summary</span>
+  </nav>
+  <div class="wrap">
+    <header class="doc-head">
+      <h1>Contacts &amp; list investigation — consolidated findings</h1>
+      <p class="meta">Synthesized from the April 2026 investigation pack (Reforge + Snowflake). Internal working summary for the contacts prototype program.</p>
+    </header>
+
+    <section aria-labelledby="h-at-glance">
+      <h2 id="h-at-glance">At a glance</h2>
+      <p><span class="tag">Import</span> File upload is the highest-friction bulk path: roughly half of starters see errors; more than a quarter abandon after errors. Copy/paste is far calmer (~10% error rate) but sees heavy mid-funnel drop-off.</p>
+      <p><span class="tag">Activation</span> Snowflake retention (March 2026, first six lifecycle months): users <strong>without</strong> a recorded contact upload show <strong>0% activation</strong> vs. <strong>59.5%</strong> for uploaders. Sending campaigns shows the same pattern (1.4% vs. 78.1%).</p>
+      <p><span class="tag">Lists</span> Qualitative + behavioral data align on list/segment confusion, weak discoverability for “create list,” and high demand to see contacts <em>within</em> a specific list (e.g. “View contact lists”).</p>
+      <p><span class="tag">Positioning</span> Initiative docs reframe work from “experiment?” to “reliability / Customer Happiness mandate” with a Q2 scoping posture and ROI narrative (~$5–8M/year addressable activation value in briefs; engineering cost still needs firm sizing).</p>
+    </section>
+
+    <section aria-labelledby="h-activation">
+      <h2 id="h-activation">Why contact import is not a side quest</h2>
+      <p>Retention-model cuts in the pack show contact upload is effectively gating core product use—not an optional onboarding flourish.</p>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Metric (first 6 months)</th>
+            <th scope="col">With contact upload</th>
+            <th scope="col">Without contact upload</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Activation rate</td><td>59.5%</td><td><strong>0.0%</strong></td></tr>
+          <tr><td>Sent ≥1 campaign</td><td>78.1%</td><td>1.4%</td></tr>
+          <tr><td>Churn rate</td><td>7.2%</td><td>7.8%</td></tr>
+        </tbody>
+      </table>
+      <p class="callout"><strong>Implication for this prototype:</strong> flows that help users add contacts (upload, paste, single, sync) should be treated as primary surfaces—clear states, honest validation, and recoverable errors matter as much as campaign builders.</p>
+    </section>
+
+    <section aria-labelledby="h-upload">
+      <h2 id="h-upload">File upload: experience &amp; severity</h2>
+      <h3>Journey funnel (≈30 days, “Upload from file” starters)</h3>
+      <ul>
+        <li><strong>4,431</strong> users clicked “Upload from file”; <strong>99.8%</strong> reached the import screen.</li>
+        <li><strong>3,959</strong> reached the final Import action; <strong>548</strong> explicitly cancelled; <strong>472</strong> silently abandoned (no Import, no Cancel).</li>
+        <li>Of those who clicked Import, <strong>1,137 (~28.7%)</strong> hit a final import error (often permission/consent/surprise skips).</li>
+      </ul>
+      <h3>Mutually exclusive outcome mix (upload cohort analysis)</h3>
+      <table>
+        <thead>
+          <tr><th>Outcome</th><th>Share</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Smooth success (no errors)</td><td><strong>49.7%</strong></td><td>Median ~4 minutes — target experience.</td></tr>
+          <tr><td>Success despite errors</td><td>14.2%</td><td>Often 2–3 repeats of the same error; tail users see many errors over hours or days.</td></tr>
+          <tr><td>Abandon after errors</td><td>27.1%</td><td>Blocked from finishing; strong “trying other software” language in qual.</td></tr>
+          <tr><td>Abandon, no tracked errors</td><td>9.1%</td><td>Confusion, distraction, or untracked issues.</td></tr>
+        </tbody>
+      </table>
+      <h3>Time &amp; desperation signals</h3>
+      <ul>
+        <li><strong>50.1%</strong> of uploaders spread work across <strong>multiple days</strong> (~15 day average) to finish or give up.</li>
+        <li><strong>6.5%</strong> spent <strong>30–120 minutes</strong> in a single session (median ~54 minutes for that bucket).</li>
+        <li><strong>~27%</strong> tried <strong>multiple file types</strong> (CSV ↔ Excel) — usually a header/structure issue, not format.</li>
+      </ul>
+      <h3>Root causes called out in the pack</h3>
+      <ul>
+        <li><strong>Brittle header detection</strong> — reasonable labels (“E-mail”, “Email1”, “organization”) fail against rigid expectations.</li>
+        <li><strong>System rejects valid files</strong> — thousands of errors on bona fide CSV/XLSX; the <strong>official template</strong> is cited as failing for a non-trivial number of users.</li>
+        <li><strong>Stage-level failures</strong> — upload (format, JSON, timeouts), mapping (10,579 users in one cut), and late permission/consent surprises erode trust.</li>
+      </ul>
+      <blockquote>Representative frustration: repeated uploads, support calls, and explicit churn to competitors when imports still fail.</blockquote>
+    </section>
+
+    <section aria-labelledby="h-methods">
+      <h2 id="h-methods">Add-contact methods (volume vs. pain)</h2>
+      <p>From add-contacts traffic (~21K users / 30 days in the brief):</p>
+      <table>
+        <thead>
+          <tr><th>Method</th><th>Approx. share of visitors</th><th>Error story</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Single contact form</td><td>~35%</td><td>High usage; error telemetry called out as incomplete.</td></tr>
+          <tr><td>Copy / paste multiple</td><td>~30%</td><td><strong>~9.8%</strong> error rate among those reaching Import — much lower than file upload, but less than half reach the final button.</td></tr>
+          <tr><td>File upload</td><td>~21%</td><td><strong>~52.8%</strong> hit errors among upload starters — worst reliability, critical for bulk migrations.</td></tr>
+          <tr><td>Integrations</td><td>~7%</td><td>Error tracking gaps noted.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Design takeaway:</strong> prioritize upload reliability and “explain what will happen” before final Import; keep paste/single paths short and legible as fallbacks.</p>
+    </section>
+
+    <section aria-labelledby="h-lists">
+      <h2 id="h-lists">Lists, segments, and navigation</h2>
+      <ul>
+        <li><strong>Import failures</strong> — highest convergent qual + quant signal; especially painful for active senders (~27% error rate in one sender-focused cut vs. ~22% for non-senders).</li>
+        <li><strong>List vs. segment confusion</strong> — recurring qual theme; only ~16% of “create list” choices pick segments vs. static lists.</li>
+        <li><strong>Navigation churn</strong> — large volumes of cross-clicks among Contacts, Lists, Segments, and Audience sidebars suggest users hunting for the right home.</li>
+        <li><strong>“View contact lists”</strong> — tens of thousands of users / hundreds of thousands of clicks — people need to see membership and manage lists from a contact-centric view.</li>
+        <li><strong>List creation dialog</strong> — ~38K opens vs. ~30.5K static selections and ~5.9K segment selections; ~7K gap interpreted as hesitation or confusion at type choice.</li>
+        <li><strong>Operational work</strong> — export, bulk delete, merge, and duplicate cleanup show up frequently in feedback and events (ongoing hygiene, not one-off).</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-initiative">
+      <h2 id="h-initiative">Initiative framing (from CONTACT_IMPORT_FIX_INITIATIVE)</h2>
+      <ul>
+        <li>Stated mandate: treat broken import as <strong>critical workflow debt</strong>, not an A/B curiosity.</li>
+        <li>Customer promise narrative: move a large monthly cohort from multi-day / multi-error loops to sub–10 minute success with preview, clearer mapping, and fewer surprise dead-ends.</li>
+        <li>Business narrative: combine activation lift + support deflection; briefs cite <strong>order-of-week payback</strong> if engineering lands in the low single-digit month range (needs validation).</li>
+        <li>Execution ask: structured eng scoping, opportunity-cost stack rank vs. other activation blockers, optional competitive benchmarking on import success rates.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-gaps">
+      <h2 id="h-gaps">Open questions the pack still flags</h2>
+      <ul>
+        <li><strong>Opportunity cost</strong> — is import the highest-leverage activation bet vs. other blockers?</li>
+        <li><strong>Engineering scope</strong> — firm estimates by workstream (headers, parsing, permissions UX, preflight, template fixes).</li>
+        <li><strong>Unit economics</strong> — precise support ticket cost and deflection model.</li>
+        <li><strong>Competitive bar</strong> — do peers hit 80–90% smooth import or share the same pain?</li>
+        <li><strong>Segmentation</strong> — error and abandonment rates by tier, industry, and tenure (where available).</li>
+      </ul>
+    </section>
+
+    <section class="sources" aria-labelledby="h-sources">
+      <h2 id="h-sources">Source files in this folder</h2>
+      <p>Original Markdown delivered with the investigation zip (edit these as the source of truth; refresh this summary when they change).</p>
+      <ul>
+        <li><a href="../contacts-vision-viewer.html">contacts-vision-viewer.html</a> (Markdown: <code>contacts-vision.md</code>) — design north star &amp; exec summary · Katie DeVoe · April 2026</li>
+        <li><a href="../contacts-missed-opportunities-presentation.html">contacts-missed-opportunities-presentation.html</a> — missed opportunities <strong>visual deck</strong> (same content as the Markdown brief)</li>
+        <li><a href="../contacts-missed-opportunities.md">contacts-missed-opportunities.md</a> (repo: <code>docs/contacts-missed-opportunities.md</code>) — missed opportunities brief · canonical Markdown · design team · April 2026</li>
+        <li><a href="./CONTACT_IMPORT_FIX_INITIATIVE.md">CONTACT_IMPORT_FIX_INITIATIVE.md</a> — initiative narrative &amp; roadmap</li>
+        <li><a href="./investment_decision_contact_import.md">investment_decision_contact_import.md</a> — investment / leadership brief</li>
+        <li><a href="./ANALYSIS_SUMMARY.md">ANALYSIS_SUMMARY.md</a> — analyst recap &amp; SQL pointer</li>
+        <li><a href="./REFRAMED_SUMMARY.md">REFRAMED_SUMMARY.md</a> — before/after framing memo</li>
+        <li><a href="./contacts_lists_friction_analysis.md">contacts_lists_friction_analysis.md</a> — convergent friction themes</li>
+        <li><a href="./friction_severity_analysis.md">friction_severity_analysis.md</a> — upload journey severity</li>
+        <li><a href="./file_upload_deep_dive.md">file_upload_deep_dive.md</a> — headers, requirements, error taxonomy</li>
+        <li><a href="./abandonment_clarification.md">abandonment_clarification.md</a> — funnel definitions</li>
+        <li><a href="./contact_addition_method_breakdown.md">contact_addition_method_breakdown.md</a> — method mix &amp; rates</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

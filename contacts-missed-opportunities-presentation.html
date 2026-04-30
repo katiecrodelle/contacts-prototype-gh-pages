@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Missed opportunities — Contacts &amp; list growth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./hub-subpage.css" />
+  <style>
+    :root {
+      --ink: #0f141c;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --surface: #f8fafc;
+      --card: #ffffff;
+      --blue: #1856ed;
+      --blue-soft: #e8f1ff;
+      --blue-deep: #0f3cb8;
+      --orange: #ff9e1a;
+      --stone-100: #f1f5f9;
+      --shadow: 0 18px 50px rgba(15, 20, 28, 0.08);
+      --radius: 20px;
+      --font-display: "Fraunces", Georgia, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: linear-gradient(165deg, #f5f3ef 0%, #eef2f7 38%, #f8fafc 100%);
+      min-height: 100vh;
+    }
+    a { color: var(--blue); font-weight: 600; }
+    a:hover { color: var(--blue-deep); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar__brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .topbar__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 0.85rem;
+    }
+    .topbar__links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .topbar__links a:hover { color: var(--blue); }
+    .topbar__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 24px 56px;
+      text-align: center;
+    }
+    .hero__eyebrow {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 2.85rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin: 0 0 20px;
+      color: var(--ink);
+    }
+    .hero__sub {
+      max-width: 52ch;
+      margin: 0 auto 28px;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 20px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .hero__meta strong { color: var(--ink); }
+
+    .toc {
+      max-width: 920px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+    .toc__inner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      box-shadow: var(--shadow);
+    }
+    .toc h2 {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .toc ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .toc a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+    }
+    .toc a:hover { border-color: var(--blue); color: var(--blue); }
+    .toc span.num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--blue);
+      width: 1.6em;
+    }
+
+    .section {
+      max-width: 920px;
+      margin: 0 auto 48px;
+      padding: 0 24px;
+    }
+    .section__head {
+      margin-bottom: 20px;
+    }
+    .section__head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 3vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .section__head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 24px rgba(15, 20, 28, 0.04);
+    }
+    .card--accent {
+      border-color: color-mix(in srgb, var(--blue) 22%, var(--line));
+      background: linear-gradient(145deg, #ffffff 0%, var(--blue-soft) 100%);
+    }
+    .card--dark {
+      background: linear-gradient(155deg, #0f141c 0%, #1a2230 100%);
+      color: #e2e8f0;
+      border-color: #1e293b;
+    }
+    .card--dark h3 { color: #fff; }
+    .card--dark p { color: #cbd5e1; }
+    .card--dark .design-q { background: rgba(24, 86, 237, 0.25); border-color: rgba(96, 165, 250, 0.35); color: #e0f2fe; }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .card h3 .badge {
+      flex-shrink: 0;
+      display: inline-grid;
+      place-items: center;
+      min-width: 2rem;
+      height: 2rem;
+      padding: 0 8px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+    .card p { margin: 0 0 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 1.2em;
+      color: var(--muted);
+    }
+    .card li { margin-bottom: 6px; }
+    .card li strong { color: var(--ink); }
+
+    .design-q {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border-left: 4px solid var(--orange);
+      background: linear-gradient(90deg, #fff7ed 0%, #fff 60%);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #9a3412;
+    }
+    .design-q::before {
+      content: "Design question";
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    .data-table-wrap {
+      overflow-x: auto;
+      margin: 18px 0;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      min-width: 420px;
+    }
+    table.data th,
+    table.data td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+    table.data th {
+      background: var(--stone-100);
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    table.data tr:last-child td { border-bottom: 0; }
+    table.data td:nth-child(2),
+    table.data td:nth-child(3) {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+    }
+
+    .tracks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .track {
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+    }
+    .track--1 {
+      background: linear-gradient(160deg, #fff 0%, var(--blue-soft) 100%);
+      border-color: color-mix(in srgb, var(--blue) 28%, var(--line));
+    }
+    .track--2 {
+      background: linear-gradient(160deg, #fafafa 0%, #f1f5f9 100%);
+    }
+    .track h4 {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .track p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+
+    .map-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    table.map {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    table.map th,
+    table.map td {
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+    table.map th {
+      background: #0f141c;
+      color: #f1f5f9;
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    table.map tr:nth-child(even) td { background: #fafbfc; }
+    table.map tr:last-child td { border-bottom: 0; }
+
+    footer.footer {
+      max-width: 920px;
+      margin: 64px auto 40px;
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    footer.footer p { margin: 0.5em 0; max-width: 70ch; margin-left: auto; margin-right: auto; }
+
+    @media print {
+      .topbar { position: relative; }
+      body { background: #fff; }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="hub-subpage-nav" aria-label="Hub">
+    <a class="hub-subpage-nav__back" href="./index.html#hub">← Contacts hub</a>
+    <span class="hub-subpage-nav__meta">Missed opportunities</span>
+  </nav>
+  <header class="topbar">
+    <span class="topbar__brand">Contacts &amp; list growth</span>
+    <nav class="topbar__links" aria-label="Document formats">
+      <span class="topbar__pill">April 2026</span>
+      <a href="./contacts-missed-opportunities.md">Plain Markdown</a>
+      <a href="./contacts-investigation/index.html">Investigation hub</a>
+      <a href="./contacts-vision-viewer.html">Vision story</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="hero__eyebrow">Constant Contact · Design team</p>
+    <h1>Missed opportunities in the contacts conversation</h1>
+    <p class="hero__sub">
+      Import is broken and fixing it is the right mandate — but the same dataset points to retention, differentiation, and product surfaces we are barely discussing.
+    </p>
+    <div class="hero__meta">
+      <span>Based on <strong>Reforge + Snowflake</strong> pack</span>
+      <span>+ competitive landscape</span>
+    </div>
+  </section>
+
+  <nav class="toc" aria-label="On this page">
+    <div class="toc__inner">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#why"><span class="num">·</span> Why this exists</a></li>
+        <li><a href="#data"><span class="num">·</span> The second story in the data</a></li>
+        <li><a href="#blind"><span class="num">1–3</span> Structural blind spots</a></li>
+        <li><a href="#outside"><span class="num">4–7</span> Beyond “fix import”</a></li>
+        <li><a href="#design"><span class="num">·</span> What this means for design</a></li>
+        <li><a href="#map"><span class="num">·</span> Opportunity map</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article>
+    <section class="section" id="why">
+      <div class="section__head">
+        <h2>Why this exists</h2>
+        <p>The initiative is focused where it should be — and this brief widens the lens.</p>
+      </div>
+      <div class="card">
+        <p>
+          The contacts initiative has correctly identified that <strong>import is broken</strong> and that fixing it is a
+          <strong>business-critical mandate</strong>. The activation data is unambiguous: users without a recorded contact upload have a
+          <strong>0% activation rate</strong> vs. <strong>59.5%</strong> for uploaders. Fixing the broken import flow is the right Q2 call.
+        </p>
+        <p>
+          But the data contains signals that point well beyond “fix what’s broken.” This brief documents those signals — the opportunities hiding in the same dataset that aren’t currently part of the conversation.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="data">
+      <div class="section__head">
+        <h2>The activation data has a second story</h2>
+        <p>Nobody is telling this one loudly enough yet.</p>
+      </div>
+      <div class="card card--accent">
+        <div class="data-table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th scope="col">Metric (first 6 months)</th>
+                <th scope="col">With contact upload</th>
+                <th scope="col">Without contact upload</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Activation rate</td><td>59.5%</td><td>0.0%</td></tr>
+              <tr><td>Sent ≥1 campaign</td><td>78.1%</td><td>1.4%</td></tr>
+              <tr><td>Churn rate</td><td><strong>7.2%</strong></td><td><strong>7.8%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The churn gap between users who upload and users who don’t is only <strong>0.6 percentage points</strong>.
+          People who successfully get contacts in are still churning at a meaningful rate. Import gates entry — but something else fails to hold users once they’re in.
+        </p>
+        <p><strong>Fixing import gets users to the starting line. It doesn’t make them runners.</strong></p>
+        <div class="design-q">
+          What does the product feel like for someone who imported 500 contacts but doesn’t know what to do next?
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="blind">
+      <div class="section__head">
+        <h2>Structural blind spots</h2>
+        <p>Three patterns the initiative conversation underweights.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">1</span> Copy/paste is a stealth winner</h3>
+        <p>
+          ~30% of add-contact traffic; ~10% error rate vs. ~53% for file upload — already far more reliable. Yet less than half who start copy/paste reach the final Import button: <strong>mid-funnel UX drop-off</strong>, not a technical ceiling. One of the most investable quick wins — and almost absent from the initiative narrative because it isn’t “broken enough.”
+        </p>
+        <div class="design-q">
+          What happens between “user pastes content” and “user clicks Import” that loses more than half of them?
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">2</span> Single contact form — highest volume, worst telemetry</h3>
+        <p>
+          ~35% of traffic — more than any other path — with error telemetry flagged as <strong>incomplete</strong>. We may be blind to serious friction on the most-used surface.
+        </p>
+        <div class="design-q">
+          What does single-contact add feel like for a non-technical user who just got a business card at a networking event?
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">3</span> Segmentation is the 84% problem</h3>
+        <p>
+          Only ~16% of list creation picks segments vs. static lists. Beyond navigation, users who only use static lists get a <strong>Rolodex</strong>, not a marketing engine — weaker targeting, signals, and perceived ROI. A retention problem in disguise.
+        </p>
+        <div class="design-q">
+          Is low segment adoption discoverability, comprehension, or trust? (Each needs a different design response.)
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="outside">
+      <div class="section__head">
+        <h2>Opportunities outside “fix import”</h2>
+        <p>Where differentiation and retention can compound after the floor is solid.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">4</span> Contact acquisition</h3>
+        <p>We optimize for contacts users <em>already have</em>. Growth also lives where SMBs <em>earn</em> new contacts:</p>
+        <ul>
+          <li><strong>Signup forms &amp; landing pages</strong></li>
+          <li><strong>QR codes</strong> — events, retail, print</li>
+          <li><strong>Text-to-join</strong></li>
+          <li><strong>Mobile capture</strong> — card scanner, address book</li>
+        </ul>
+        <p>Category peers have invested in capture-at-the-moment; that story is largely absent from our initiative framing.</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">5</span> Integrations — import can become optional</h3>
+        <p>
+          ~7% of traffic; error tracking gaps. The path to a <strong>self-maintaining</strong> database for Shopify, Google, Eventbrite, Square, POS stacks. Competitive analysis: differentiation increasingly comes from integrations — yet this path is underexplored internally.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">6</span> The migration cohort</h3>
+        <p>
+          ~27% of uploaders try CSV <em>and</em> Excel — classic migrator behavior, high intent, high frustration, churn risk when imports fail. A migration-specific experience could ship empathy with a fraction of general-parser scope.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3><span class="badge">7</span> Data hygiene as engagement</h3>
+        <p>
+          Merge, duplicates, cleanup show up in qual and events — framed as one-off maintenance. <strong>Proactive hygiene</strong> (“47 duplicates — merge?”) re-engages users, signals intelligence, and supports deliverability.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="design">
+      <div class="section__head">
+        <h2>What this means for design</h2>
+        <p>Two tracks — fix the floor, build the ceiling.</p>
+      </div>
+      <div class="card card--dark">
+        <p style="margin-bottom: 20px; font-size: 1.02rem;">
+          Q2 is solving the right problem. These signals mean design should hold <strong>parallel truths</strong>: reliability is mandatory — and it is not sufficient for retention on its own.
+        </p>
+        <div class="tracks">
+          <div class="track track--1">
+            <h4>Track 1 — Fix the floor</h4>
+            <p>Reliable, predictable, recoverable import. Improve copy/paste completion. Instrument the single-contact path so we can see reality.</p>
+          </div>
+          <div class="track track--2">
+            <h4>Track 2 — Build the ceiling</h4>
+            <p>“What do users do once contacts are in?” Segmentation onboarding, hygiene surfaces, mobile capture moments, acquisition tools — staged so they don’t dilute Q2.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="map">
+      <div class="section__head">
+        <h2>Quick reference — opportunity map</h2>
+      </div>
+      <div class="map-table-wrap">
+        <table class="map">
+          <thead>
+            <tr>
+              <th scope="col">Opportunity</th>
+              <th scope="col">Signal</th>
+              <th scope="col">Design implication</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Copy/paste mid-funnel</td><td>~30% traffic; &lt;50% reach Import</td><td>UX investigation — not technical</td></tr>
+            <tr><td>Single form telemetry</td><td>~35% traffic; incomplete errors</td><td>Instrument before redesign</td></tr>
+            <tr><td>Segmentation</td><td>16% segments vs. static</td><td>Comprehension / trust / discovery</td></tr>
+            <tr><td>Acquisition</td><td>Not in investigation scope</td><td>New surfaces — forms, QR, mobile</td></tr>
+            <tr><td>Migration flow</td><td>~27% multi-format tries</td><td>High-intent cohort; targeted UX</td></tr>
+            <tr><td>Integrations</td><td>~7% traffic; tracking gaps</td><td>Self-maintaining list story</td></tr>
+            <tr><td>Hygiene</td><td>Strong behavioral signals</td><td>Ongoing engagement, not one-off</td></tr>
+            <tr><td>Post-import</td><td>7.2% churn with upload</td><td>“Now what?” unanswered by import alone</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </article>
+
+  <footer class="footer">
+    <p>
+      Synthesized from the April 2026 Reforge + Snowflake investigation pack and competitive landscape analysis.
+    </p>
+    <p>
+      Sources: CONTACT_IMPORT_FIX_INITIATIVE.md, investment_decision_contact_import.md, contacts_lists_friction_analysis.md, friction_severity_analysis.md, and the industry competitive brief.
+    </p>
+    <p>
+      <a href="./contacts-missed-opportunities.md">Keep reading the canonical Markdown version →</a>
+    </p>
+  </footer>
+</body>
+</html>
